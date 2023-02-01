@@ -11,17 +11,19 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
-    container: #names of images from public Image repositories;
-      image: node:16
+    # container: #names of images from public Image repositories;
+    #   image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongoDBlabel
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017 #when accessing a service container from GHA Runner
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
     services:
       mongoDBlabel:
         image: mongo
+        ports:
+          - 27017:27017 #expose Service container ports when accessing it from a GHA Runner
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
