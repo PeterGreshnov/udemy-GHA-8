@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     container: #names of images from public Image repositories;
       image: node:16
-      env: #here we can define envs needeed for the IMAGE that we are using (according to its spec on Docker Hub)
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: agsm519.mongodb.net
